@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Book a Career Guidance Workshop — IIC Lakshya (Schools)</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0a1628;
+    --navy-mid: #122040;
+    --gold: #c9972b;
+    --gold-light: #e8b84b;
+    --gold-pale: #fdf3e0;
+    --cream: #faf8f4;
+    --white: #ffffff;
+    --text: #1a2540;
+    --text-muted: #5a6a84;
+    --border: #dde3ed;
+    --border-focus: #c9972b;
+    --success: #1a7a4a;
+    --error: #c0392b;
+    --shadow: 0 4px 24px rgba(10,22,40,0.10);
+    --shadow-lg: 0 12px 48px rgba(10,22,40,0.18);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--cream);
+    color: var(--text);
+    min-height: 100vh;
+  }
+
+  /* ─── HEADER ─── */
+  .hero {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1a3060 100%);
+    padding: 56px 24px 52px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 70% 60% at 50% 0%, rgba(201,151,43,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(201,151,43,0.18);
+    border: 1px solid rgba(201,151,43,0.45);
+    color: var(--gold-light);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    border-radius: 40px;
+    margin-bottom: 22px;
+  }
+  .hero h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(26px, 4.5vw, 44px);
+    font-weight: 700;
+    color: var(--white);
+    line-height: 1.2;
+    margin-bottom: 14px;
+  }
+  .hero h1 span { color: var(--gold-light); }
+  .hero p {
+    font-size: 15px;
+    color: rgba(255,255,255,0.72);
+    max-width: 560px;
+    margin: 0 auto 10px;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+  .hero-divider {
+    width: 52px; height: 2px;
+    background: linear-gradient(90deg, var(--gold), transparent);
+    margin: 22px auto 0;
+  }
+
+  /* ─── FORM CARD ─── */
+  .form-wrap {
+    max-width: 700px; margin: 40px auto 80px; padding: 0 20px;
+  }
+  .section-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 40px 40px;
+    box-shadow: var(--shadow);
+    animation: fadeSlide .35s ease;
+  }
+  @keyframes fadeSlide {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px; font-weight: 700;
+    color: var(--navy); margin-bottom: 6px;
+  }
+  .section-hint {
+    font-size: 13.5px; color: var(--text-muted); margin-bottom: 32px;
+    line-height: 1.6;
+  }
+  .subhead {
+    font-size: 15px; font-weight: 700; color: var(--navy);
+    margin: 36px 0 18px; padding-top: 28px; border-top: 1px solid var(--border);
+  }
+  .subhead:first-of-type { margin-top: 0; padding-top: 0; border-top: none; }
+
+  /* ─── FIELDS ─── */
+  .field { margin-bottom: 24px; }
+  .field label {
+    display: block;
+    font-size: 13.5px; font-weight: 600;
+    color: var(--navy); margin-bottom: 7px;
+  }
+  .field .hint {
+    font-size: 12px; color: var(--text-muted);
+    margin-bottom: 8px; display: block; line-height: 1.5;
+  }
+  .req { color: var(--gold); margin-left: 2px; }
+
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    color: var(--text);
+    background: var(--white);
+    transition: border-color .2s, box-shadow .2s;
+    outline: none;
+  }
+  input:focus, textarea:focus, select:focus {
+    border-color: var(--gold);
+    box-shadow: 0 0 0 3px rgba(201,151,43,0.12);
+  }
+
+  /* Radio / Checkbox Groups */
+  .choice-group { display: flex; flex-direction: column; gap: 10px; }
+  .choice-group.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  @media(max-width:480px){ .choice-group.grid-2 { grid-template-columns: 1fr; } }
+  .choice-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 10px; padding: 13px 16px;
+    cursor: pointer; transition: all .2s;
+    background: var(--white);
+  }
+  .choice-item:hover { border-color: var(--gold-light); background: var(--gold-pale); }
+  .choice-item input { margin-top: 2px; accent-color: var(--gold); flex-shrink: 0; width:16px; height:16px; }
+  .choice-item span { font-size: 13.5px; color: var(--text); line-height: 1.5; }
+  .choice-item.selected { border-color: var(--gold); background: var(--gold-pale); }
+
+  /* ─── MONTH PICKER ─── */
+  .month-wrapper {
+    background: linear-gradient(135deg, #0a1628 0%, #122040 100%);
+    border-radius: 16px; padding: 20px; margin-bottom: 4px;
+    box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+  }
+  .month-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px;
+  }
+  .month-item {
+    border-radius: 10px; padding: 16px 8px; text-align: center;
+    cursor: pointer; transition: all .18s;
+    border: 1.5px solid rgba(255,255,255,0.15);
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.85);
+    font-size: 13.5px; font-weight: 600;
+  }
+  .month-item .m-year { display:block; font-size: 10.5px; font-weight: 500; color: rgba(255,255,255,0.45); margin-top: 3px; }
+  .month-item:hover { border-color: var(--gold); background: rgba(201,151,43,0.2); color:#fff; transform: scale(1.03); }
+  .month-item.selected {
+    border-color: var(--gold); background: var(--gold); color: var(--navy);
+    font-weight: 800; transform: scale(1.04); box-shadow: 0 4px 16px rgba(201,151,43,0.5);
+  }
+  .month-item.selected .m-year { color: rgba(10,22,40,0.6); }
+
+  /* ─── DATE (DAY) PICKER ─── */
+  .date-picker-wrap { margin-top: 18px; display: none; }
+  .date-picker-wrap.active { display: block; }
+  .cal-wrapper {
+    background: linear-gradient(135deg, #0a1628 0%, #122040 100%);
+    border-radius: 16px; padding: 20px; margin-bottom: 12px;
+    box-shadow: 0 8px 32px rgba(10,22,40,0.18);
+  }
+  .cal-month-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px; font-weight: 700; color: #fff;
+    letter-spacing: .3px; margin-bottom: 14px;
+  }
+  .cal-month-title span { color: var(--gold-light); }
+  .cal-grid {
+    display: grid; grid-template-columns: repeat(7, 1fr); gap: 5px;
+  }
+  .cal-dow {
+    text-align: center; font-size: 10px; font-weight: 700;
+    color: rgba(255,255,255,0.45); padding: 4px 2px 8px; letter-spacing: .8px;
+    text-transform: uppercase;
+  }
+  .cal-dow.weekend { color: var(--gold-light); opacity: 0.8; }
+  .cal-day {
+    aspect-ratio: 1; border-radius: 10px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    border: 1.5px solid transparent; transition: all .18s;
+    font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.85);
+    position: relative; background: rgba(255,255,255,0.06);
+  }
+  .cal-day:hover:not(.disabled):not(.empty):not(.past) {
+    border-color: var(--gold); background: rgba(201,151,43,0.2); color: #fff; transform: scale(1.05);
+  }
+  .cal-day.selected {
+    border-color: var(--gold); background: var(--gold);
+    color: var(--navy); font-weight: 800; transform: scale(1.08);
+    box-shadow: 0 4px 16px rgba(201,151,43,0.5);
+  }
+  .cal-day.today {
+    border-color: #7ab0ff; background: rgba(122,176,255,0.15); color: #aac4ff; font-weight: 700;
+  }
+  .cal-day.past { opacity: 0.22; cursor: not-allowed; }
+  .cal-day.empty { cursor: default; background: transparent; border-color: transparent; }
+  .selected-date-strip {
+    background: var(--gold-pale); border: 1.5px solid rgba(201,151,43,0.4);
+    border-radius: 12px; padding: 12px 16px;
+    font-size: 13px; color: var(--navy); min-height: 46px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .selected-date-strip .tag {
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    color: var(--navy); border-radius: 20px;
+    padding: 5px 14px 5px 11px; font-size: 12px; font-weight: 700;
+    display: flex; align-items: center; gap: 6px;
+    box-shadow: 0 2px 8px rgba(201,151,43,0.3);
+  }
+  .selected-date-strip .tag button {
+    background: rgba(0,0,0,0.15); border: none; cursor: pointer; font-size: 12px;
+    color: var(--navy); padding: 0 0 0 2px; line-height: 1; font-weight: 900;
+    width: 16px; height: 16px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  }
+  .selected-date-strip .empty-msg { color: var(--text-muted); font-style: italic; font-size: 13px; }
+
+  /* ─── ERROR ─── */
+  .field-error { font-size: 12px; color: var(--error); margin-top: 6px; display: none; }
+  .field.has-error input,
+  .field.has-error textarea,
+  .field.has-error select { border-color: var(--error); }
+  .field.has-error .field-error { display: block; }
+  .field.has-error .choice-item,
+  .field.has-error .month-wrapper { border: 1.5px solid var(--error) !important; border-radius: 16px; }
+
+  /* ─── NAVIGATION ─── */
+  .nav-row {
+    display: flex; justify-content: flex-end; align-items: center;
+    margin-top: 36px; padding-top: 28px;
+    border-top: 1px solid var(--border);
+  }
+  .btn {
+    padding: 13px 32px; border-radius: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px; font-weight: 600;
+    cursor: pointer; border: none; transition: all .22s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  .btn-primary {
+    background: linear-gradient(135deg, var(--gold) 0%, var(--gold-light) 100%);
+    color: var(--navy);
+    box-shadow: 0 4px 16px rgba(201,151,43,0.35);
+  }
+  .btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 24px rgba(201,151,43,0.45);
+  }
+  .btn-primary:disabled { opacity: 0.6; cursor: not-allowed; transform:none; }
+
+  /* ─── THANK YOU ─── */
+  .thankyou {
+    background: var(--white); border-radius: 16px;
+    padding: 56px 40px; text-align: center;
+    box-shadow: var(--shadow-lg); display: none;
+  }
+  .thankyou.active { display: block; animation: fadeSlide .4s ease; }
+  .ty-icon {
+    width: 70px; height: 70px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold), var(--gold-light));
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 28px; font-size: 30px;
+    box-shadow: 0 8px 32px rgba(201,151,43,0.35);
+  }
+  .ty-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px; color: var(--navy); margin-bottom: 12px;
+  }
+  .ty-body { font-size: 15px; color: var(--text-muted); line-height: 1.7; max-width: 440px; margin: 0 auto 28px; }
+  .ty-note {
+    background: var(--gold-pale); border: 1px solid rgba(201,151,43,0.35);
+    border-radius: 10px; padding: 16px 20px;
+    font-size: 13px; color: #7a5c10; line-height: 1.6;
+    max-width: 440px; margin: 0 auto;
+  }
+
+  /* ─── FOOTER ─── */
+  .footer { text-align: center; padding: 24px; font-size: 12px; color: var(--text-muted); }
+
+  @media(max-width:600px){
+    .section-card { padding: 28px 20px; }
+    .hero { padding: 40px 16px 36px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="hero">
+  <div class="hero-badge">IIC Lakshya · School Outreach</div>
+  <h1>Book a <span>Career Guidance Workshop</span><br> — For Your School</h1>
+  <p>Helping Commerce students in Grades 11 &amp; 12 explore Global Finance &amp; Business career pathways — through an in-house school session or a dedicated webinar.</p>
+  <div class="hero-divider"></div>
+</div>
+
+<div class="form-wrap">
+
+  <div class="section-card" id="form-section">
+    <div class="section-title">Request a Workshop</div>
+    <div class="section-hint">Tell us a little about yourself and your preferred timing, and our team will confirm the details with you. ✦ Fields marked * are required.</div>
+
+    <div class="subhead">Your Details</div>
+
+    <div class="field" id="f-name">
+      <label>Full Name <span class="req">*</span></label>
+      <span class="hint">e.g. Ms. Fatima Khan</span>
+      <input type="text" id="fullName" placeholder="Enter your full name">
+      <div class="field-error">Please enter your full name.</div>
+    </div>
+
+    <div class="field" id="f-email">
+      <label>Email ID <span class="req">*</span></label>
+      <span class="hint">e.g. counsellor@yourschool.ae — we'll send confirmations here</span>
+      <input type="email" id="emailAddr" placeholder="yourname@school.ae">
+      <div class="field-error">Please enter a valid email address.</div>
+    </div>
+
+    <div class="field" id="f-phone">
+      <label>Contact Number (with country code) <span class="req">*</span></label>
+      <span class="hint">e.g. +971 50 123 4567</span>
+      <input type="tel" id="phoneNum" placeholder="+971 50 000 0000">
+      <div class="field-error">Please enter your contact number.</div>
+    </div>
+
+    <div class="field" id="f-desig">
+      <label>Designation <span class="req">*</span></label>
+      <div class="choice-group grid-2" id="desig-group">
+        <label class="choice-item"><input type="radio" name="designation" value="Principal"><span>Principal</span></label>
+        <label class="choice-item"><input type="radio" name="designation" value="Student Counsellor"><span>Student Counsellor</span></label>
+        <label class="choice-item"><input type="radio" name="designation" value="Teacher"><span>Teacher</span></label>
+        <label class="choice-item"><input type="radio" name="designation" value="Other"><span>Other</span></label>
+      </div>
+      <div class="field-error">Please select your designation.</div>
+    </div>
+
+    <div class="field" id="f-desig-other-wrap" style="display:none;">
+      <label>Please specify your designation</label>
+      <input type="text" id="desigOther" placeholder="e.g. Vice Principal">
+    </div>
+
+    <div class="subhead">Session Preferences</div>
+
+    <div class="field" id="f-sesstype">
+      <label>Session Type Preference <span class="req">*</span></label>
+      <span class="hint">Would you prefer an in-person seminar at your school, or an online webinar?</span>
+      <div class="choice-group grid-2" id="sesstype-group">
+        <label class="choice-item"><input type="radio" name="sessType" value="Seminar (In-School)"><span>Seminar (In-School)</span></label>
+        <label class="choice-item"><input type="radio" name="sessType" value="Webinar (Online)"><span>Webinar (Online)</span></label>
+      </div>
+      <div class="field-error">Please select a session type preference.</div>
+    </div>
+
+    <div class="field" id="f-students">
+      <label>Students List (Commerce) <span class="req">*</span></label>
+      <span class="hint">Which grade(s) should this session be planned for?</span>
+      <div class="choice-group grid-2" id="students-group">
+        <label class="choice-item"><input type="radio" name="students" value="11th"><span>11th</span></label>
+        <label class="choice-item"><input type="radio" name="students" value="12th"><span>12th</span></label>
+        <label class="choice-item"><input type="radio" name="students" value="11th & 12th"><span>11th &amp; 12th</span></label>
+      </div>
+      <div class="field-error">Please select a student group.</div>
+    </div>
+
+    <div class="field" id="f-month">
+      <label>Preferred Month <span class="req">*</span></label>
+      <span class="hint">Select the month you'd like the workshop to take place</span>
+      <div class="month-wrapper">
+        <div class="month-grid" id="month-grid"><!-- injected by JS --></div>
+      </div>
+      <div class="field-error">Please select a preferred month.</div>
+    </div>
+
+    <div class="field" id="f-date">
+      <label>Preferred Date <span style="color:var(--text-muted); font-weight:400;">(optional)</span></label>
+      <span class="hint">If you have a specific date in mind within your selected month, choose it below.</span>
+      <div class="date-picker-wrap" id="date-picker-wrap">
+        <div class="cal-wrapper">
+          <div class="cal-month-title" id="cal-month-title">—</div>
+          <div class="cal-grid" id="cal-grid"><!-- injected by JS --></div>
+        </div>
+        <div class="selected-date-strip" id="selected-date-strip">
+          <span class="empty-msg">📅 No specific date selected — that's okay, we'll work with your preferred month</span>
+        </div>
+      </div>
+      <div class="date-picker-placeholder" id="date-picker-placeholder" style="font-size:13px;color:var(--text-muted);font-style:italic;">Select a preferred month above to choose a date.</div>
+    </div>
+
+    <div class="nav-row">
+      <button class="btn btn-primary" onclick="submitForm()" id="submitBtn">Submit Request ✓</button>
+    </div>
+  </div>
+
+  <!-- ─────────────── THANK YOU ─────────────── -->
+  <div class="thankyou" id="thankyou">
+    <div class="ty-icon">✓</div>
+    <div class="ty-title">Request Received!</div>
+    <p class="ty-body">Thank you for reaching out to IIC Lakshya. Our team will contact you within 24 hours to confirm your Career Guidance Workshop. Please check your email — including your spam folder — for our confirmation.</p>
+    <div class="ty-note">📋 <strong>What happens next?</strong><br>Our team reviews your request → We check availability for your preferred month/date → You receive a confirmation with session details and next steps.</div>
+  </div>
+
+</div><!-- /form-wrap -->
+
+<div class="footer">© IIC Lakshya — Indian Institute of Commerce &nbsp;·&nbsp; Career Guidance Programme</div>
+
+<script>
+// Full month name lookup (needed for real calendar month indices 0-11)
+const ALL_MONTH_NAMES = ['January','February','March','April','May','June',
+                          'July','August','September','October','November','December'];
+// Only showing the remaining months of 2026: September–December
+const MONTH_NAMES = ['September','October','November','December'];
+const MONTH_YEAR  = 2026;
+const DOW_LABELS  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+const TODAY = new Date();
+TODAY.setHours(0,0,0,0);
+
+function pad2(n){ return String(n).padStart(2,'0'); }
+function dateKey(y,m,d){ return `${y}-${pad2(m+1)}-${pad2(d)}`; }
+
+// All available months map to fixed 2026 real-calendar month indices (Sep=8 ... Dec=11)
+const REAL_MONTH_INDEX = [8, 9, 10, 11];
+
+function yearForMonth(i) {
+  return MONTH_YEAR;
+}
+
+let selectedMonthIndex = null; // 0-11
+let selectedMonthYear  = null;
+let selectedDateKey    = null;
+
+function buildMonthGrid() {
+  const grid = document.getElementById('month-grid');
+  grid.innerHTML = '';
+  MONTH_NAMES.forEach((name, i) => {
+    const yr = yearForMonth(i);
+    const el = document.createElement('div');
+    el.className = 'month-item';
+    el.dataset.index = i;
+    el.innerHTML = `${name}<span class="m-year">${yr}</span>`;
+    el.addEventListener('click', () => selectMonth(i));
+    grid.appendChild(el);
+  });
+}
+
+function selectMonth(i) {
+  selectedMonthIndex = i;
+  selectedMonthYear = MONTH_YEAR;
+  selectedDateKey = null; // reset any previously chosen date when month changes
+
+  document.querySelectorAll('.month-item').forEach(el => {
+    el.classList.toggle('selected', Number(el.dataset.index) === i);
+  });
+
+  document.getElementById('f-month').classList.remove('has-error');
+  document.getElementById('date-picker-placeholder').style.display = 'none';
+  document.getElementById('date-picker-wrap').classList.add('active');
+  renderDayCalendar();
+}
+
+function renderDayCalendar() {
+  if (selectedMonthIndex === null) return;
+  const year = selectedMonthYear;
+  const month = REAL_MONTH_INDEX[selectedMonthIndex];
+
+  document.getElementById('cal-month-title').innerHTML =
+    `<span>${ALL_MONTH_NAMES[month]}</span> ${year}`;
+
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+
+  DOW_LABELS.forEach((d, i) => {
+    const el = document.createElement('div');
+    el.className = 'cal-dow' + (i === 0 || i === 6 ? ' weekend' : '');
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  const firstDay = new Date(year, month, 1).getDay();
+  for (let i = 0; i < firstDay; i++) {
+    const empty = document.createElement('div');
+    empty.className = 'cal-day empty';
+    grid.appendChild(empty);
+  }
+
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  for (let d = 1; d <= daysInMonth; d++) {
+    const key  = dateKey(year, month, d);
+    const date = new Date(year, month, d);
+    const isToday = date.getTime() === TODAY.getTime();
+    const isPast  = date < TODAY;
+    const isSelected = selectedDateKey === key;
+
+    const el = document.createElement('div');
+    let cls = 'cal-day';
+    if (isPast) cls += ' past';
+    if (isToday) cls += ' today';
+    if (isSelected) cls += ' selected';
+    el.className = cls;
+    el.textContent = d;
+
+    if (!isPast) {
+      el.addEventListener('click', () => toggleDate(key));
+    }
+    grid.appendChild(el);
+  }
+
+  renderDateStrip();
+}
+
+function toggleDate(key) {
+  selectedDateKey = (selectedDateKey === key) ? null : key;
+  renderDayCalendar();
+}
+
+function formatDateLabel(key) {
+  const [y, m, d] = key.split('-').map(Number);
+  const dt  = new Date(y, m-1, d);
+  const dow = DOW_LABELS[dt.getDay()];
+  const mon = ALL_MONTH_NAMES[m-1].slice(0,3);
+  return `${dow} ${d} ${mon} ${y}`;
+}
+
+function renderDateStrip() {
+  const strip = document.getElementById('selected-date-strip');
+  if (!selectedDateKey) {
+    strip.innerHTML = '<span class="empty-msg">📅 No specific date selected — that\'s okay, we\'ll work with your preferred month</span>';
+    return;
+  }
+  strip.innerHTML = `<span class="tag">📅 ${formatDateLabel(selectedDateKey)}
+    <button onclick="removeDate()" title="Remove">✕</button>
+  </span>`;
+}
+
+function removeDate() {
+  selectedDateKey = null;
+  renderDayCalendar();
+}
+
+buildMonthGrid();
+
+// ─── DESIGNATION "OTHER" TOGGLE ───────────────────────────────────────────────
+document.getElementById('desig-group').addEventListener('change', () => {
+  document.querySelectorAll('#desig-group .choice-item').forEach(item => {
+    const inp = item.querySelector('input');
+    item.classList.toggle('selected', inp.checked);
+  });
+  const otherChecked = document.querySelector('input[name="designation"][value="Other"]').checked;
+  document.getElementById('f-desig-other-wrap').style.display = otherChecked ? 'block' : 'none';
+});
+
+document.getElementById('sesstype-group').addEventListener('change', () => {
+  document.querySelectorAll('#sesstype-group .choice-item').forEach(item => {
+    const inp = item.querySelector('input');
+    item.classList.toggle('selected', inp.checked);
+  });
+});
+
+document.getElementById('students-group').addEventListener('change', () => {
+  document.querySelectorAll('#students-group .choice-item').forEach(item => {
+    const inp = item.querySelector('input');
+    item.classList.toggle('selected', inp.checked);
+  });
+});
+
+// ─── VALIDATION ────────────────────────────────────────────────────────────
+function validate() {
+  let ok = true;
+  const clearErr = id => { const f = document.getElementById(id); if (f) f.classList.remove('has-error'); };
+  const setErr   = id => { const f = document.getElementById(id); if (f) { f.classList.add('has-error'); ok = false; } };
+
+  clearErr('f-name'); clearErr('f-email'); clearErr('f-phone'); clearErr('f-desig'); clearErr('f-sesstype'); clearErr('f-students'); clearErr('f-month');
+
+  if (!document.getElementById('fullName').value.trim()) setErr('f-name');
+
+  const em = document.getElementById('emailAddr').value.trim();
+  if (!em || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em)) setErr('f-email');
+
+  if (!document.getElementById('phoneNum').value.trim()) setErr('f-phone');
+
+  if (!document.querySelector('input[name="designation"]:checked')) setErr('f-desig');
+  if (!document.querySelector('input[name="sessType"]:checked')) setErr('f-sesstype');
+  if (!document.querySelector('input[name="students"]:checked')) setErr('f-students');
+  if (selectedMonthIndex === null) setErr('f-month');
+
+  return ok;
+}
+
+function getDesignation() {
+  const checked = document.querySelector('input[name="designation"]:checked');
+  if (!checked) return '';
+  if (checked.value === 'Other') {
+    const other = document.getElementById('desigOther').value.trim();
+    return other ? `Other — ${other}` : 'Other';
+  }
+  return checked.value;
+}
+
+function getPreferredMonthLabel() {
+  if (selectedMonthIndex === null) return '—';
+  return `${MONTH_NAMES[selectedMonthIndex]} ${selectedMonthYear}`;
+}
+
+function submitForm() {
+  if (!validate()) {
+    document.querySelector('.field.has-error').scrollIntoView({ behavior: 'smooth', block: 'center' });
+    return;
+  }
+
+  const btn = document.getElementById('submitBtn');
+  btn.textContent = 'Submitting…';
+  btn.disabled = true;
+
+  const data = {
+    '_subject':          'New School Workshop Request — IIC Lakshya',
+    '_to':                'renoldwilson@iiclakshya.com',
+    '_replyto':           document.getElementById('emailAddr').value.trim(),
+    '_cc':                'renoldwilson@iiclakshya.com',
+    'Full Name':          document.getElementById('fullName').value.trim(),
+    'Email':               document.getElementById('emailAddr').value.trim(),
+    'Contact Number':      document.getElementById('phoneNum').value.trim(),
+    'Designation':         getDesignation(),
+    'Session Type Preference': (document.querySelector('input[name="sessType"]:checked') || {}).value || '',
+    'Students List (Commerce)': (document.querySelector('input[name="students"]:checked') || {}).value || '',
+    'Preferred Month':     getPreferredMonthLabel(),
+    'Preferred Date':      selectedDateKey ? formatDateLabel(selectedDateKey) : 'No specific date — flexible within preferred month',
+    'Submitted At':        new Date().toLocaleString('en-AE', { timeZone: 'Asia/Dubai' })
+  };
+
+  fetch('https://formspree.io/f/mvznaaab', {
+    method: 'POST',
+    headers: { 'Accept': 'application/json', 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  })
+  .then(res => {
+    if (res.ok) {
+      showThankYou();
+    } else {
+      res.json().then(err => console.error('Formspree error:', err));
+      showThankYou();
+    }
+  })
+  .catch(err => {
+    console.error('Network error:', err);
+    showThankYou();
+  });
+}
+
+function showThankYou() {
+  document.getElementById('form-section').style.display = 'none';
+  document.getElementById('thankyou').classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
